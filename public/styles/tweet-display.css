@@ -55,13 +55,13 @@ article footer {
   padding: 1em 2em;
 }
 
-.reactions span {
+/* .reactions span {
+} */
+.reactions i {
   margin-left: 0.5em;
-}
-.reactions span i {
   color: #4056A1;
   transition: 0.5s ease-in-out;
 }
-.reactions span i:hover {
+.reactions i:hover {
   color: #c2983b;
 }

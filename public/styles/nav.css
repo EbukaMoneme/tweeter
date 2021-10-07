@@ -4,14 +4,14 @@ nav {
   height: 120px;
   width: 100%;
   background-color: #4056A1;
+  /* background-color: transparent; */
   color: #FFFFFF;
   padding: 0 1.5em;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: fixed;
+  position: sticky;
   top: 0;
-  /* z-index: 1; */
 }
 
 .logo {
@@ -21,6 +21,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 }
 .fas {
   color: red;

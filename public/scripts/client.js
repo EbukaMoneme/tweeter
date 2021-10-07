@@ -5,6 +5,9 @@
  */
 
 $(() => {
+  // hide error
+  const errorElement = $('.form-error');
+  errorElement.hide()
 
   //Load tweets
   loadTweets();
@@ -14,30 +17,58 @@ $(() => {
   form.on('submit', function(event) {
     event.preventDefault();
     const serializedData = $(this).serialize();
-
     if (validateForm(serializedData)) {
       $.post('/tweets', serializedData)
         .done(() => {
-          console.log('success');
-          console.log(serializedData);
-          // loadTweets();
-  
+          loadTweets();
         }) 
-        .fail(() => {
-          console.log("messed up");
+        .fail((error) => {
+          console.log("messed up because:", error);
         }) 
     }
-  })  
+  })
+  
+  //Form visibility
+  const arrow = $('.arrow')
+  const icon = $('.icon')
+  const up = "fa-angle-double-up"
+  const down = "fa-angle-double-down"
+  arrow.on('click', function() {
+    if(form.is(":visible")) {
+      form.slideUp();
+      icon.addClass(up);
+      icon.removeClass(down);
+    } else {
+      form.slideDown();
+      icon.addClass(down);
+      icon.removeClass(up);
+      $('#tweet-text').focus()
+    }
+  })
 });
 
 const validateForm = (tweetData) => {
   const counter = Number($('.counter').val());
+  const errorElement = $('.form-error')
+  const errorRead = $('.error-message')
+  
+  if (errorElement.is(":visible")) {
+    errorElement.slideUp()
+  }
   if(counter === 140) {
-    window.alert("Tweet field required");
+    let errorMessage = "Tweet field is required";
+    setTimeout(() => {
+      errorRead.text(errorMessage);
+      errorElement.slideDown('slow');
+    }, 300)
     return false;
   }
   if(counter < 0) {
-    window.alert("Exceeding max character count");
+    let errorMessage = "Exceeding max character count (140)";
+    setTimeout(() => {
+      errorRead.text(errorMessage);
+      errorElement.slideDown('slow');
+    }, 300)
     return false;
   }
   return true;
@@ -46,7 +77,6 @@ const validateForm = (tweetData) => {
 const loadTweets = () => {
   $.get('/tweets')
     .done((response) => {
-      console.log(response)
       renderTweets(response);
     })
     .fail((error) => {
@@ -57,7 +87,7 @@ const loadTweets = () => {
 const renderTweets = (tweets) => {
   for (const tweet of tweets) {
     const $newTweet = createTweetElement(tweet);
-    $('#tweets-container').append($newTweet);
+    $('#tweets-container').prepend($newTweet);
   }
 };
 

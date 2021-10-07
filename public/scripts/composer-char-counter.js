@@ -5,9 +5,9 @@ $(document).ready(function() {
       let counter = $(this).siblings().children().last();
       counter.text(charCount);
       if (charCount < 0) {
-        counter.css('color', 'red');
+        counter.addClass('red');
       } else {
-        counter.css('color', '#545149');
+        counter.removeClass('red');
       }
     });
 });

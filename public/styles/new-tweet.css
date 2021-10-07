@@ -1,7 +1,7 @@
 .new-tweet {
   display: flex;
   flex-direction: column;
-  margin: 2em 0 3em 0;
+  margin: 1em 0 3em 0;
   text-align: center;
 }
 
@@ -31,3 +31,30 @@ button {
   color: white;
 }
 
+.form-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid red;
+  padding: 1em;
+}
+
+.error-message {
+  margin-left: 1em;
+}
+
+.red {
+  color: red;
+}
+
+.icon {
+  animation: bounce 0.5s;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(.5, 0.05, 1, .5);
+  animation-iteration-count: infinite;
+}
+
+@keyframes bounce {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(0, 20px, 0); }
+}

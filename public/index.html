@@ -34,7 +34,7 @@
     <nav>
       <span class="logo">tweeter</span>
       <div class="arrow">
-        <span><strong>Write</strong> a new tweet</span><i class="fas fa-angle-double-down"></i>
+        <span><strong>Write</strong> a new tweet</span><i class="fas fa-angle-double-down icon"></i>
         
       </div>
     </nav>
@@ -53,8 +53,12 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
-        <h2>Compose Tweet</h2>
         <form method="POST" action="/tweets" id="tweet-form">
+          <div class="form-error">
+            <div class="error-icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <div class="error-message"><p></p></div>
+          </div>
+          <h2>Compose Tweet</h2>
           <!-- <label for="tweet-text">What are you humming about?</label> -->
           <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
           <div class="tweet-description">

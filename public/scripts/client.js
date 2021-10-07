@@ -5,10 +5,6 @@
  */
 
 $(() => {
-  // hide error
-  const errorElement = $('.form-error');
-  errorElement.hide()
-
   //Load tweets
   loadTweets();
 
@@ -20,6 +16,8 @@ $(() => {
     if (validateForm(serializedData)) {
       $.post('/tweets', serializedData)
         .done(() => {
+          $('#tweet-text').val('');
+          $('.counter').val(140);
           loadTweets();
         }) 
         .fail((error) => {
@@ -49,7 +47,7 @@ $(() => {
 
 const validateForm = (tweetData) => {
   const counter = Number($('.counter').val());
-  const errorElement = $('.form-error')
+  const errorElement = $('.error-notification')
   const errorRead = $('.error-message')
   
   if (errorElement.is(":visible")) {

@@ -54,9 +54,14 @@
     <main class="container">
       <section class="new-tweet">
         <form method="POST" action="/tweets" id="tweet-form">
-          <div class="form-error">
-            <div class="error-icon"><i class="fas fa-exclamation-triangle"></i></div>
-            <div class="error-message"><p></p></div>
+          <div class="error-notification disappear">
+            <div class="error-header">
+              <span class="logo">tweeter error</span>
+            </div>
+            <div class="form-error">
+              <div class="error-icon"><i class="fas fa-exclamation-triangle"></i></div>
+              <div class="error-message"><p></p></div>
+            </div>
           </div>
           <h2>Compose Tweet</h2>
           <!-- <label for="tweet-text">What are you humming about?</label> -->

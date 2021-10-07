@@ -35,8 +35,15 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 3px solid red;
   padding: 1em;
+}
+.error-notification {
+  border: 3px solid red;
+}
+.error-header {
+  background-color: #4056A1;
+  color: white;
+  padding: 0.5em 0;
 }
 
 .error-message {
@@ -45,6 +52,10 @@ button {
 
 .red {
   color: red;
+}
+
+.disappear {
+  display: none;
 }
 
 .icon {

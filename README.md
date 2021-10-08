@@ -6,11 +6,11 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Final Product
 
-!["Login page"](https://github.com/EbukaMoneme/tinyapp/blob/master/docs/login-page.png?raw=true)
+!["Desktop view"](https://github.com/EbukaMoneme/tweeter/blob/master/docs/desktop-tweeter.png?raw=true)
 
-!["URL Display page"](https://github.com/EbukaMoneme/tinyapp/blob/master/docs/urls-page.png?raw=true)
+!["Mobile view"](https://github.com/EbukaMoneme/tweeter/blob/master/docs/mobile-tweeter.png?raw=true)
 
-!["Edit URL page"](https://github.com/EbukaMoneme/tinyapp/blob/master/docs/url-show-page.png?raw=true)
+!["Desktop form error"](https://github.com/EbukaMoneme/tweeter/blob/master/docs/form-error.png?raw=true)
 
 ## Getting Started
 

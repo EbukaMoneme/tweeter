@@ -9,30 +9,30 @@ $(() => {
   loadTweets();
 
   //Posts tweets
-  const form = $('#tweet-form')
+  const form = $('#tweet-form');
   form.on('submit', function(event) {
     event.preventDefault();
     const serializedData = $(this).serialize();
-    if (validateForm(serializedData)) {
+    if (validateForm()) {
       $.post('/tweets', serializedData)
         .done(() => {
           $('#tweet-text').val('');
           $('.counter').val(140);
           loadTweets();
-        }) 
+        })
         .fail((error) => {
           console.log("messed up because:", error);
-        }) 
+        });
     }
-  })
+  });
   
   //Form visibility
-  const arrow = $('.arrow')
-  const icon = $('.icon')
-  const up = "fa-angle-double-up"
-  const down = "fa-angle-double-down"
+  const arrow = $('.arrow');
+  const icon = $('.icon');
+  const up = "fa-angle-double-up";
+  const down = "fa-angle-double-down";
   arrow.on('click', function() {
-    if(form.is(":visible")) {
+    if (form.is(":visible")) {
       form.slideUp();
       icon.addClass(up);
       icon.removeClass(down);
@@ -40,33 +40,33 @@ $(() => {
       form.slideDown();
       icon.addClass(down);
       icon.removeClass(up);
-      $('#tweet-text').focus()
+      $('#tweet-text').focus();
     }
-  })
+  });
 });
 
-const validateForm = (tweetData) => {
+const validateForm = () => {
   const counter = Number($('.counter').val());
-  const errorElement = $('.error-notification')
-  const errorRead = $('.error-message')
+  const errorElement = $('.error-notification');
+  const errorRead = $('.error-message');
   
   if (errorElement.is(":visible")) {
-    errorElement.slideUp()
+    errorElement.slideUp();
   }
-  if(counter === 140) {
+  if (counter === 140) {
     let errorMessage = "Tweet field is required";
     setTimeout(() => {
       errorRead.text(errorMessage);
       errorElement.slideDown('slow');
-    }, 300)
+    }, 200);
     return false;
   }
-  if(counter < 0) {
+  if (counter < 0) {
     let errorMessage = "Exceeding max character count (140)";
     setTimeout(() => {
       errorRead.text(errorMessage);
       errorElement.slideDown('slow');
-    }, 300)
+    }, 200);
     return false;
   }
   return true;
@@ -79,20 +79,22 @@ const loadTweets = () => {
     })
     .fail((error) => {
       console.log("Something's wrong:", error);
-    })
-}
+    });
+};
 
 const renderTweets = (tweets) => {
+  const $tweetsContainer = $('#tweets-container');
+  $tweetsContainer.empty();
   for (const tweet of tweets) {
     const $newTweet = createTweetElement(tweet);
-    $('#tweets-container').prepend($newTweet);
+    $tweetsContainer.prepend($newTweet);
   }
 };
 
 const createTweetElement = (tweet) => {
   // tweet header
-  const $header = $('<header>')
-  const $profilePicture = $('<div class="profile-picture">')
+  const $header = $('<header>');
+  const $profilePicture = $('<div class="profile-picture">');
   const $avatar = $(`<img src=${tweet.user.avatars} alt="profile">`);
   const $name = $('<span>').text(tweet.user.name);
   $profilePicture.append($avatar, $name);
@@ -100,11 +102,11 @@ const createTweetElement = (tweet) => {
 
   const $handle = $('<div class="handle">');
   const $handleText = $('<p>').text(tweet.user.handle);
-  $handle.append($handleText)
+  $handle.append($handleText);
   $header.append($handle);
 
   // tweet body
-  const $tweetContnet = $('<div class= "tweet-content">')
+  const $tweetContnet = $('<div class= "tweet-content">');
   const $content = $('<p>').text(tweet.content.text);
   const $line = $('<hr>');
   $tweetContnet.append($content, $line);
@@ -116,10 +118,10 @@ const createTweetElement = (tweet) => {
   $date.append($day);
   $footer.append($date);
 
-  const $reactions = $('<div class="reactions">')
-  const $flag = $('<i class="fas fa-flag"></i>')
-  const $retweet = $('<i class="fas fa-retweet"></i>')
-  const $heart = $('<i class="fas fa-heart"></i>')
+  const $reactions = $('<div class="reactions">');
+  const $flag = $('<i class="fas fa-flag"></i>');
+  const $retweet = $('<i class="fas fa-retweet"></i>');
+  const $heart = $('<i class="fas fa-heart"></i>');
   $reactions.append($flag, $retweet, $heart);
   $footer.append($reactions);
 

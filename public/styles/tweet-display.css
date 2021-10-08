@@ -8,6 +8,14 @@
   box-shadow: 6px 6px 5px rgb(64 86 161 / 0.7);  
 }
 
+.tweet-description {
+  margin-bottom: 1.5em;
+}
+
+#tweets-container {
+  margin-top: -2.5em;
+}
+
 article header {
   display: flex;
   justify-content: space-between;
@@ -55,8 +63,6 @@ article footer {
   padding: 1em 2em;
 }
 
-/* .reactions span {
-} */
 .reactions i {
   margin-left: 0.5em;
   color: #4056A1;
@@ -64,4 +70,24 @@ article footer {
 }
 .reactions i:hover {
   color: #c2983b;
+}
+
+@media screen and (min-width: 1024px) {
+  .view {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .container{
+    margin: 0;
+  }
+  .container, .new-tweet, .tweet, #tweet-text {
+    max-width: 60vw;
+
+    /* margin-top: 0.5em; */
+  }
+  .profile-header {
+    max-width: 30vw;
+    margin-top: 2.95em;
+  }
 }

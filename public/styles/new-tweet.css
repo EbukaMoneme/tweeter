@@ -1,7 +1,7 @@
 .new-tweet {
   display: flex;
   flex-direction: column;
-  margin: 1em 0 3em 0;
+  margin: 2.5em 0 3em 0;
   text-align: center;
 }
 
@@ -37,9 +37,12 @@ button {
   align-items: center;
   padding: 1em;
 }
+
 .error-notification {
   border: 3px solid red;
+  margin-bottom: 2em;
 }
+
 .error-header {
   background-color: #4056A1;
   color: white;
